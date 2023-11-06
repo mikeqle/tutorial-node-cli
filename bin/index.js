@@ -11,7 +11,8 @@ if (type === "make:controller") {
     fs.readFileSync("controllers/" + name + ".js");
     console.log("File exists");
   } catch (error) {
-    fs.writeFileSync("controllers/" + name + ".js", "Hello", { flag: "w+" });
+    const template = fs.readFileSync("bin/templates/controller.tpl");
+    fs.writeFileSync("controllers/" + name + ".js", template, { flag: "w+" });
     console.log("Created Controller" + name);
   }
 }
